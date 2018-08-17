@@ -1,7 +1,7 @@
 {
-  "name": "govuk-frontend-react",
+  "name": "govuk-frontend-emotion",
   "version": "0.0.1",
-  "description": "govuk-frontend converted to React CSSinJS",
+  "description": "govuk-frontend converted to emotion CSSinJS",
   "main": "lib/index.js",
   "module": "es/index.js",
   "scripts": {
@@ -11,16 +11,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/penx/govuk-frontend-react.git"
+    "url": "git+https://github.com/penx/govuk-frontend-emotion.git"
   },
   "author": "Alasdair McLeay",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/penx/govuk-frontend-react/issues"
+    "url": "https://github.com/penx/govuk-frontend-emotion/issues"
   },
-  "homepage": "https://github.com/penx/govuk-frontend-react#readme",
+  "homepage": "https://github.com/penx/govuk-frontend-emotion#readme",
   "peerDependencies": {
-    "emotion": ">=2"
+    "emotion": ">=9"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
