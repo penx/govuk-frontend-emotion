@@ -35,7 +35,8 @@ componentDirs.map(componentDir => {
   })
   .then(rendered => {
     let emotion = convertCssForEmotion(rendered.css.toString());
-    emotion = emotion.replace(/injectGlobal`((.|\n)+)`;/, '');
+    // remove all calls to injectGlobal
+    emotion = emotion.replace(/injectGlobal`([^`])+`;/, '');
     emotion = format(
         emotion.replace(
             /^injectGlobal/m,
