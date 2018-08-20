@@ -1,6 +1,6 @@
 const sassExtract = require('sass-extract');
 
-const { lstatSync, readdirSync, writeFileSync } = require('fs')
+const { existsSync, mkdirSync, lstatSync, readdirSync, writeFileSync } = require('fs')
 const { join, parse } = require('path')
 const { convertCssForEmotion } = require('css-in-js-generator/lib/convertCssForEmotion');
 const { format } = require('prettier');
@@ -13,17 +13,29 @@ const getDirectories = source =>
 
 const componentDirs = getDirectories('./node_modules/govuk-frontend/components/');
 
+const mkdir = dir => {
+  if (!existsSync(dir)){
+    mkdirSync(dir);
+  }
+}
+
+mkdir('./es')
+mkdir('./es/components')
+mkdir('./lib')
+mkdir('./lib/css')
+mkdir('./lib/json')
+
+
 componentDirs.map(componentDir => {
   const componentName = parse(componentDir).name;
-  console.warn(componentName);
+  console.log(`building: ${componentName}`);
 
   sassExtract.render({
     file: `./node_modules/govuk-frontend/components/${componentName}/_${componentName}.scss`
   })
   .then(rendered => {
-    console.log(rendered.vars);
-    console.log(rendered.css.toString());
     let emotion = convertCssForEmotion(rendered.css.toString());
+    emotion = emotion.replace(/injectGlobal`((.|\n)+)`;/, '');
     emotion = format(
         emotion.replace(
             /^injectGlobal/m,
@@ -35,11 +47,10 @@ componentDirs.map(componentDir => {
         },
     ).replace(/^css/m, "injectGlobal");
 
-    console.log(emotion);
-
     writeFileSync(`./es/components/${componentName}.js`, emotion);
-    writeFileSync(`./bin/${componentName}.json`, JSON.stringify(rendered.vars, null, 2));
-    writeFileSync(`./bin/${componentName}.css`, rendered.css.toString());
+    writeFileSync(`./lib/json/${componentName}.json`, JSON.stringify(rendered.vars, null, 2));
+    writeFileSync(`./lib/css/${componentName}.css`, rendered.css.toString());
+    console.log(`done: ${componentName}`);
   });
 })
 
