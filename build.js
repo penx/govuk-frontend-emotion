@@ -2,7 +2,7 @@ const sassExtract = require('sass-extract');
 
 const { existsSync, mkdirSync, lstatSync, readdirSync, writeFileSync } = require('fs')
 const { join, parse } = require('path')
-const { convertCssForEmotion } = require('css-in-js-generator/lib/convertCssForEmotion');
+const { convertCssForEmotion } = require('@penx/css-in-js-generator/lib/convertCssForEmotion');
 const { format } = require('prettier');
 
 

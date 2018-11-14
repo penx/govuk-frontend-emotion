@@ -4,6 +4,7 @@
   "description": "govuk-frontend converted to emotion CSSinJS",
   "main": "lib/index.js",
   "module": "es/index.js",
+  "jsnext:main": "es/index.js",
   "scripts": {
     "build": "node build.js && npm run build:lib",
     "build:lib": "babel es -d lib",
@@ -20,7 +21,8 @@
   },
   "homepage": "https://github.com/penx/govuk-frontend-emotion#readme",
   "peerDependencies": {
-    "emotion": ">=9"
+    "emotion": ">=9",
+    "@emotion/primitives": ">=9"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
