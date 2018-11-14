@@ -25,7 +25,7 @@
     "@emotion/primitives": ">=9"
   },
   "devDependencies": {
-    "@penx/css-in-js-generator": "0.0.1",
+    "@penx/css-in-js-generator": "0.0.2",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-1": "^6.24.1",
