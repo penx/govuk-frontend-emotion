@@ -28,7 +28,7 @@
   "devDependencies": {
     "@emotion/core": "^10.0.0-beta.13",
     "@emotion/styled": "^10.0.0-beta.13",
-    "@penx/css-in-js-generator": "0.0.4",
+    "@penx/css-in-js-generator": "0.0.5",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-1": "^6.24.1",
