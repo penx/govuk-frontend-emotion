@@ -22,10 +22,10 @@
   "homepage": "https://github.com/penx/govuk-frontend-emotion#readme",
   "peerDependencies": {
     "emotion": ">=9",
-    "@emotion/primitives": ">=9"
+    "react-emotion": ">=9"
   },
   "devDependencies": {
-    "@penx/css-in-js-generator": "0.0.2",
+    "@penx/css-in-js-generator": "0.0.3",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-1": "^6.24.1",
