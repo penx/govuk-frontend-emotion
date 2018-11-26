@@ -54,12 +54,14 @@ function process(sassFile, componentName, outDir) {
   });
 }
 
-getDirectories('./node_modules/govuk-frontend/components/').map(componentDir => {
-  const componentName = parse(componentDir).name;
-  console.log(`building: ${componentName}`);
-  const sassFile = `./node_modules/govuk-frontend/components/${componentName}/_${componentName}.scss`
-  process(sassFile, componentName, 'components')
-});
+const componentNames = getDirectories('./node_modules/govuk-frontend/components/')
+  .map(componentDir => {
+    const componentName = parse(componentDir).name;
+    console.log(`building: ${componentName}`);
+    const sassFile = `./node_modules/govuk-frontend/components/${componentName}/_${componentName}.scss`
+    process(sassFile, componentName, 'components')
+    return componentName;
+  })
 
 // getFiles('./node_modules/govuk-frontend/objects/')
 //   .filter(file => parse(file).name !== '_all.scss')
@@ -72,6 +74,6 @@ getDirectories('./node_modules/govuk-frontend/components/').map(componentDir => 
 
 // const componentNames = componentDirs.map(componentDir => parse(componentDir).name);
 
-// const indexFile = componentNames.map(name => `export * from './components/${name}';`).join('\n');
+const indexFile = componentNames.map(name => `export * from './components/${name}';`).join('\n');
 
-// writeFileSync('./es/index.js', indexFile);
+writeFileSync('./es/index.js', indexFile);
