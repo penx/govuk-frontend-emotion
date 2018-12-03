@@ -33,7 +33,7 @@ function process(sassFile, componentName, outDir) {
     file: sassFile
   })
   .then(rendered => {
-    let emotion = convertCssForEmotion(rendered.css.toString());
+    let emotion = convertCssForEmotion(rendered.css.toString(), `.govuk-${componentName}`);
     // remove all calls to injectGlobal
     emotion = emotion.replace(/injectGlobal`([^`])+`;/, '');
     emotion = format(

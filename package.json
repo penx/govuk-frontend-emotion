@@ -7,6 +7,7 @@
   "jsnext:main": "es/index.js",
   "scripts": {
     "build": "rimraf es && node build.js && npm run build:lib",
+    "build:debug": "node --inspect-brk build.js",
     "build:lib": "rimraf lib && babel es -d lib",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -28,7 +29,7 @@
   "devDependencies": {
     "@emotion/core": "^10.0.0-beta.13",
     "@emotion/styled": "^10.0.0-beta.13",
-    "@penx/css-in-js-generator": "0.0.5",
+    "@penx/css-in-js-generator": "0.0.6",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-1": "^6.24.1",
